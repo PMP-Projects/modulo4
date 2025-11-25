@@ -128,7 +128,7 @@ services:
     ports:
       - "9093:9093"
     environment:
-      KAFKA_BROKER_ID: 1
+      KAFKA_BROKER_ID: 2
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENERS: PLAINTEXT://kafka2:19093,PLAINTEXT_HOST://0.0.0.0:9093
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka2:19093,PLAINTEXT_HOST://localhost:9093
@@ -157,7 +157,7 @@ services:
     ports:
       - "9094:9094"
     environment:
-      KAFKA_BROKER_ID: 1
+      KAFKA_BROKER_ID: 3
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENERS: PLAINTEXT://kafka3:19094,PLAINTEXT_HOST://0.0.0.0:9094
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka3:19094,PLAINTEXT_HOST://localhost:9094
@@ -177,3 +177,4 @@ services:
       retries: 5
     networks:
       - pmp-network
+

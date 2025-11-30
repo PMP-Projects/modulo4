@@ -1,8 +1,11 @@
-FROM amazoncorretto:21-alpine3.18 AS build
+FROM maven:3.9.4-amazoncorretto-21 AS build
 
 WORKDIR /app
 
-COPY . .
+COPY pom.xml .
+COPY src ./src
+
+RUN mvn -e -X -B clean package -DskipTests
 
 FROM amazoncorretto:21-alpine3.18
 

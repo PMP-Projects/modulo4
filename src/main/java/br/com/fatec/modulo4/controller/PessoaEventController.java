@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/modulo-producer/v1/pessoa")
 public class PessoaEventController {
-    private final PessoaEventProducer producer;
 
+    private final PessoaEventProducer producer;
 
     private static final Logger log = LoggerFactory.getLogger(PessoaEventController.class);
 
@@ -24,7 +24,7 @@ public class PessoaEventController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/save")
-    public void register(@Valid @RequestBody PessoaCreateRequest request) throws Exception {
+    public void register(@Valid @RequestBody PessoaCreateRequest request) {
         Pessoa pessoa = PessoaControllerAdapter.cast(request);
         log.info("Pessoa registrada!\nNome: {}\nData de Nascimento: {}", pessoa.nome(), pessoa.dataNascimento());
         producer.send(pessoa);

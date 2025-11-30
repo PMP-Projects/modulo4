@@ -36,9 +36,19 @@ public class PessoaEventProducer {
 
             log.info("📤 Enviado para o tópico: {}", topic);
 
-        } catch (TimeoutException | ExecutionException | InterruptedException e) {
+        } catch (TimeoutException | ExecutionException e) {
             log.error("Erro ao enviar mensagem para o Kafka: {}", e.getMessage(), e);
+
             throw new KafkaProducerException("Falha ao enviar mensagem para o Kafka", e);
+
+        } catch (InterruptedException e) {
+
+            Thread.currentThread().interrupt();
+
+            log.error("Thread interrompida enquanto enviava mensagem para o Kafka: {}", e.getMessage(), e);
+
+            throw new KafkaProducerException("Thread interrompida durante envio ao Kafka", e);
         }
     }
+
 }

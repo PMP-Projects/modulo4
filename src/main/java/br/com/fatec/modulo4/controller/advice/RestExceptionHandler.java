@@ -4,6 +4,7 @@ import br.com.fatec.modulo4.controller.dto.response.ErrorResponse;
 import br.com.fatec.modulo4.exception.BadRequestException;
 import br.com.fatec.modulo4.exception.InternalServerException;
 import br.com.fatec.modulo4.exception.NotFoundException;
+import br.com.fatec.modulo4.exception.KafkaProducerException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import org.slf4j.Logger;
@@ -109,5 +110,21 @@ public class RestExceptionHandler {
                 BAD_REQUEST.getReasonPhrase(),
                 errors.toString());
     }
+
+    @ResponseBody
+    @ResponseStatus(INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(KafkaProducerException.class)
+    public ErrorResponse handleKafkaProducerException(
+            final KafkaProducerException exception,
+            final HttpServletRequest request) {
+        log.error(INTERNAL_ERROR_MSG, request.getServletPath(), exception.getMessage(), exception);
+        return new ErrorResponse(
+                LocalDateTime.now(),
+                request.getServletPath(),
+                INTERNAL_SERVER_ERROR.value(),
+                "Erro ao enviar mensagem para Kafka",
+                exception.getMessage());
+    }
+
 
 }

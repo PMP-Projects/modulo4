@@ -212,3 +212,66 @@ services:
     restart: unless-stopped
     networks:
       - pmp-network
+
+
+#  modulo4-consumer1:
+#    image: juliosn/modulo4-consumer1:latest
+#    hostname: modulo4-consumer1
+#    container_name: modulo4-consumer1
+#    depends_on:
+#      mongodb:
+#        condition: service_healthy
+#      opensearch:
+#        condition: service_healthy
+#      graylog:
+#        condition: service_started
+#      zookeeper:
+#        condition: service_healthy
+#      kafka1:
+#        condition: service_healthy
+#      kafka2:
+#        condition: service_healthy
+#      kafka3:
+#        condition: service_healthy
+#    environment:
+#      KAFKA_BROKERS: kafka1:19092, kafka2:19093, kafka3:19094
+#      SERVER_PORT: 8085
+#      MONGODB_URI: mongodb://mongodb:27017/pmp?serverSelectionTimeoutMs=15000&connectTimeoutMS=15000
+#      GELF_HOST: graylog
+#      GELF_PORT: 12201
+#    ports:
+#      - "8085:8085"
+#    restart: unless-stopped
+#    networks:
+#      - pmp-network
+#
+#  modulo4-consumer2:
+#    image: juliosn/modulo4-consumer2:latest
+#    hostname: modulo4-consumer2
+#    container_name: modulo4-consumer2
+#    depends_on:
+#      mongodb:
+#        condition: service_healthy
+#      opensearch:
+#        condition: service_healthy
+#      graylog:
+#        condition: service_started
+#      zookeeper:
+#        condition: service_healthy
+#      kafka1:
+#        condition: service_healthy
+#      kafka2:
+#        condition: service_healthy
+#      kafka3:
+#        condition: service_healthy
+#    environment:
+#      KAFKA_BROKERS: kafka1:19092, kafka2:19093, kafka3:19094
+#      SERVER_PORT: 8086
+#      MONGODB_URI: mongodb://mongodb:27017/pmp?serverSelectionTimeoutMs=15000&connectTimeoutMS=15000
+#      GELF_HOST: graylog
+#      GELF_PORT: 12201
+#    ports:
+#      - "8086:8086"
+#    restart: unless-stopped
+#    networks:
+#      - pmp-network

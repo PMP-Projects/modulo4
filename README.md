@@ -1,4 +1,4 @@
-## Módulo 2.1 PMP
+## Módulo 4 PMP
 
 Producer do Módulo 4 do Projeto de PMP para entrega do Projeto Final, nele foi atendido alguns dos seguintes requisitos:
 
@@ -89,15 +89,17 @@ modulo4/
 
 ## Imagens Docker
 
-- [Módulo 4](https://hub.docker.com/r/juliosn/modulo1)
-- [Módulo 4.1](https://hub.docker.com/r/juliosn/modulo2)
-- [Módulo 4.2](https://hub.docker.com/r/juliosn/modulo-auth)
+- [Módulo 4.1](https://hub.docker.com/r/juliosn/modulo4-consumer1)
+- [Módulo 4.2](https://hub.docker.com/r/juliosn/modulo4-consumer2)
 
 ---
 
 
 ## 📦 Instalação e Configuração do Ambiente
-> Obs.: Tenha as imagens acima baixadas e presentes no seu docker para execução!
+> Obs.: Caso queria executar tudo através do ambiente docker, tenha as imagens acima baixadas e presentes no seu docker para execução! 
+
+> No docker-compose.yml há um bloco de código comentado, em que o mesmo espera as imagens no seu docker local. Apenas descomente esse trecho do código e siga as instruções abaixo
+- > **OBS.: Isso não é uma ação obrigatória para validar o funcionamento individual desse módulo. As instruções a seguir contemplam ambos os cenários, execute  conforme achar melhor!**
 
 ### 1️⃣ Clone o projeto na sua máquina e baixe as dependências:
 ```bash
@@ -123,9 +125,9 @@ Caso queira acessar o gerenciamento de logs ou a base de dados do MongoDB, você
 ---
 ## Endpoints
 
-| Método   | Endpoint                       | Descrição                                                                         |
-|----------|--------------------------------|-----------------------------------------------------------------------------------|
-| `POST`   | `/modulo-producer/v1/pessoa/save` | Realiza o envio do tópico kafka com o key/value especifico para futura integração |
+| Método   | Endpoint                             | Descrição                                                                         |
+|----------|--------------------------------------|-----------------------------------------------------------------------------------|
+| `POST`   | `/modulo-producer/v1/pessoa/save`    | Realiza o envio do tópico kafka com o key/value especifico para futura integração |
 
 ### Exemplos de uso com cURL
 
@@ -144,6 +146,18 @@ curl --request POST \
 }'
 ````
 
+---
+
+## 📦 Esteira CI/CD com Github Actions
+
+A esteira CI/CD deste projeto é automatizada via Github Actions.
+
+###  Etapas da Esteira:
+1️⃣ Verificação de **Vulnerabilidades** com o **Trivy**
+
+2️⃣ Análise de qualidade de código com **Sonar Cloud**
+
+---
 
 ## ✍️ Autor do Projeto
 
